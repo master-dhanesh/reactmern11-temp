@@ -1,34 +1,24 @@
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import User from "./components/User";
+import Cart from "./components/Cart";
+import Product from "./components/Product";
 import Home from "./components/Home";
-import Show from "./components/Show";
-import Task from "./components/Task";
 
 const App = () => {
     return (
         <>
-            <nav className="justify-center my-10 flex gap-x-10 ">
-                <NavLink
-                    className={(e) => (e.isActive ? "text-red-300" : "")}
-                    to="/"
-                >
-                    Home
-                </NavLink>
-                <NavLink
-                    className={(e) => (e.isActive ? "text-red-300" : "")}
-                    to="/show"
-                >
-                    Show
-                </NavLink>
+            <nav className="my-10 flex justify-center gap-x-10">
+                <Link to="/">Home</Link>
+                <Link to="/user">User</Link>
+                <Link to="/cart">Cart</Link>
+                <Link to="/product">Product</Link>
             </nav>
-
-            <div className="w-[80%] mx-auto p-10">
+            <div className="w-[80%] p-10 rounded bg-zinc-200 mx-auto">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* <Route path="/show" element={<Show />} />
-                    <Route path="/show/:i" element={<Task />} /> */}
-                    <Route path="/show" element={<Show />}>
-                        <Route path="/show/:i" element={<Task />} />
-                    </Route>
+                    <Route path="/user" element={<User />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/product" element={<Product />} />
                 </Routes>
             </div>
         </>
