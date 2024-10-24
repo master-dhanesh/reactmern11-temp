@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increment } from "./store/reducers/counterSlice";
+import { asyncdecrement, increment } from "./store/actions/counterActions";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -8,6 +8,11 @@ const App = () => {
     const IncrementHandler = () => {
         //call action | value + 1
         dispatch(increment(value + 1));
+    };
+
+    const DecrementHandler = () => {
+        //call action | value + 1
+        dispatch(asyncdecrement(value - 1));
     };
     return (
         <div className="w-[80%] mx-auto my-10 p-10 rounded bg-zinc-200">
@@ -18,7 +23,10 @@ const App = () => {
             >
                 Increment By 1
             </button>
-            <button className="px-4 py-2 rounded bg-red-300">
+            <button
+                onClick={DecrementHandler}
+                className="px-4 py-2 rounded bg-red-300"
+            >
                 Decrement By 1
             </button>
         </div>
